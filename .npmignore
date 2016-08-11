@@ -3,12 +3,11 @@
 
 # Additional tools
 .gitignore
+.travis.yml
+.editorconfig
 
 # External packages
 node_modules/
-
-# Editor & IDE configs
-.editorconfig
 
 # Tests
 config/

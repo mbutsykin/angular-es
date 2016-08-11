@@ -1,16 +1,16 @@
 const webpackConfig = require('./webpack.config');
-const testEntryPoint = '../src/test/ES/index.js';
+const helper = require('./utils/helper');
 
 module.exports = function (config) {
 	config.set({
-		colors: process.env.NODE_ENV !== 'ci',
-		autoWatch: process.env.NODE_ENV !== 'ci',
-		singleRun: process.env.NODE_ENV === 'ci',
+		colors: !helper.isCIBuild(),
+		autoWatch: !helper.isCIBuild(),
+		singleRun: helper.isCIBuild(),
 		logLevel: config.LOG_ERROR,
 
 		files: [
 			require.resolve('babel-polyfill/dist/polyfill.js'),
-			testEntryPoint
+			helper.getTestEntryPoint()
 		],
 
 		browsers: ['PhantomJS'],
@@ -23,11 +23,11 @@ module.exports = function (config) {
 
 		coverageReporter: {
 			type: 'lcov',
-			dir: '../build/coverage/'
+			dir: helper.getCoverageDir()
 		},
 
 		preprocessors: {
-			[testEntryPoint]: [
+			[helper.getTestEntryPoint()]: [
 				'webpack',
 				'sourcemap'
 			]
@@ -41,7 +41,10 @@ module.exports = function (config) {
 			noInfo: true
 		},
 
-		frameworks: ['jasmine', 'phantomjs-shim'],
+		frameworks: [
+			'jasmine',
+			'phantomjs-shim'
+		],
 		plugins: [
 			'karma-chrome-launcher',
 			'karma-phantomjs-shim',
@@ -50,8 +53,8 @@ module.exports = function (config) {
 			'karma-jasmine',
 			'karma-sourcemap-loader',
 			'karma-webpack',
-			process.env.NODE_ENV === 'ci' && 'karma-coverage',
-			process.env.NODE_ENV === 'ci' && 'karma-coveralls'
+			helper.isCIBuild() && 'karma-coverage',
+			// process.env.NODE_ENV === 'ci' && 'karma-coveralls'
 		]
 	});
 };

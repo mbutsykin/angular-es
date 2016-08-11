@@ -5,6 +5,7 @@ before_script:
 - npm install
 script:
 - npm test
+- npm run build
 deploy:
   provider: npm
   email: 'mbutsykin@gmail.com'

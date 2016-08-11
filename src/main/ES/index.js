@@ -6,7 +6,8 @@ import {
 	Run,
 	Config,
 	Constant,
-	Value
+	Value,
+	Directive
 } from './decorators';
 
 import {
@@ -25,6 +26,7 @@ export {
 	Config,
 	Constant,
 	Value,
+	Directive,
 
 	// helpers
 	getInjectableClass,

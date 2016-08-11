@@ -6,6 +6,7 @@ import Run from './run.decorator';
 import Config from './config.decorator';
 import Value from './value.decorator';
 import Constant from './constant.decorator';
+import Directive from './directive.decorator';
 
 export {
 	Module,
@@ -15,5 +16,6 @@ export {
 	Run,
 	Config,
 	Value,
-	Constant
+	Constant,
+	Directive
 };

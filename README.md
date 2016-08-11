@@ -3,4 +3,3 @@
 [![Downloads](https://img.shields.io/npm/dm/angular-es.svg)](https://npmjs.org/package/angular-es)
 [![Coverage Status](https://coveralls.io/repos/github/mbutsykin/angular-es/badge.svg?branch=dev)](https://coveralls.io/github/mbutsykin/angular-es?branch=dev)
 # angular-es
-

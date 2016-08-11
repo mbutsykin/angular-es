@@ -1,15 +1,15 @@
 # Editors & IDEs
-.idea
+.idea/
 
 # Additional tools
 .gitignore
 
 # External packages
-node_modules
+node_modules/
 
 # Editor & IDE configs
 .editorconfig
 
 # Tests
-karma.conf.js
-src/test
+config/
+src/test/

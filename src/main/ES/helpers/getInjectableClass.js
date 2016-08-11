@@ -1,0 +1,13 @@
+export default function (target) {
+	proxy.toString = target.toString;
+
+	return (target.$inject || []).concat([proxy]);
+
+	function proxy() {
+		let deps = Array.prototype.slice.call(arguments);
+
+		deps.unshift(null);
+
+		return new (target.bind.apply(target, deps));
+	}
+}

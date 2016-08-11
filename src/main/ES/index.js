@@ -1,11 +1,24 @@
-import Module from './decorators/module';
-import Inject from './decorators/inject';
-import Service from './decorators/service';
-import Controller from './decorators/controller';
-
-export {
+import {
 	Module,
 	Inject,
 	Service,
 	Controller
+} from './decorators';
+
+import {
+	getInjectableClass,
+	hyphen2camel
+} from './helpers';
+
+export {
+
+	// decorators
+	Module,
+	Inject,
+	Service,
+	Controller,
+
+	// helpers
+	getInjectableClass,
+	hyphen2camel
 };

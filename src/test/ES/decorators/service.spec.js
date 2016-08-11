@@ -1,4 +1,4 @@
-import '../mock/test.service';
+import {TestService} from '../mock/test.service';
 
 describe('@Service', () => {
 
@@ -10,7 +10,6 @@ describe('@Service', () => {
 
 	it('defines angular service', () => {
 		expect(testService).toBeDefined();
-		expect(testService instanceof Object).toBeTruthy();
-		expect(testService.$http instanceof Object).toBeTruthy();
+		expect(testService instanceof TestService).toBeTruthy();
 	});
 });

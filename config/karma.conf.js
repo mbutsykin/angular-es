@@ -1,7 +1,5 @@
-const _ = require('lodash');
-
 const webpackConfig = require('./webpack.config');
-const testEntryPointTpl = './src/test/ES/index.js';
+const testEntryPointTpl = '../src/test/ES/index.js';
 
 module.exports = function (config) {
 	config.set({
@@ -28,9 +26,7 @@ module.exports = function (config) {
 			].filter(Boolean)
 		},
 
-		webpack: _.extend({}, webpackConfig, {
-			entry: null
-		}),
+		webpack: webpackConfig,
 
 		webpackServer: {
 			noInfo: true

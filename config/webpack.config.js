@@ -1,10 +1,4 @@
 module.exports = {
-	entry: './src/main/ES/decorators/index.js',
-	output: {
-		path: __dirname + '/build',
-		filename: 'bundle.js',
-		publicPath: '/build/'
-	},
 	module: {
 		loaders: [
 			{

@@ -5,7 +5,7 @@
   "main": "src/main/ES/index.js",
   "scripts": {
     "test": "node_modules/karma/bin/karma start ./config/karma.config.js",
-    "build": "webpack --config ./config/webpack.config.js",
+    "build": "webpack --config ./config/webpack.config.js --display-modules",
     "postversion": "git push && git push --tags"
   },
   "repository": {

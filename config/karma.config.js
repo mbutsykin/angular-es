@@ -54,7 +54,7 @@ module.exports = function (config) {
 			'karma-sourcemap-loader',
 			'karma-webpack',
 			helper.isCIBuild() && 'karma-coverage',
-			// process.env.NODE_ENV === 'ci' && 'karma-coveralls'
+			helper.isCIBuild() && 'karma-coveralls'
 		]
 	});
 };

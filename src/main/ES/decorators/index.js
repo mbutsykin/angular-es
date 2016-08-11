@@ -4,6 +4,8 @@ import Service from './service.decorator';
 import Controller from './controller.decorator';
 import Run from './run.decorator';
 import Config from './config.decorator';
+import Value from './value.decorator';
+import Constant from './constant.decorator';
 
 export {
 	Module,
@@ -11,5 +13,7 @@ export {
 	Service,
 	Controller,
 	Run,
-	Config
+	Config,
+	Value,
+	Constant
 };

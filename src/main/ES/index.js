@@ -4,7 +4,9 @@ import {
 	Service,
 	Controller,
 	Run,
-	Config
+	Config,
+	Constant,
+	Value
 } from './decorators';
 
 import {
@@ -21,6 +23,8 @@ export {
 	Controller,
 	Run,
 	Config,
+	Constant,
+	Value,
 
 	// helpers
 	getInjectableClass,

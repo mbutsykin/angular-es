@@ -4,7 +4,9 @@ import {
 	Service,
 	Controller,
 	Config,
-	Run
+	Run,
+	Constant,
+	Value
 } from '../../../main/ES';
 
 export {
@@ -13,5 +15,7 @@ export {
 	Service,
 	Controller,
 	Config,
-	Run
+	Run,
+	Constant,
+	Value
 };

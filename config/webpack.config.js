@@ -21,13 +21,10 @@ module.exports = {
 					],
 					plugins: [
 						'transform-class-properties',
-						'transform-decorators-legacy'
+						'transform-decorators-legacy',
+						process.env.NODE_ENV === 'ci' && 'istanbul'
 					]
 				}
-			},
-			{
-				test: /\.html$/,
-				loader: 'html'
 			}
 		]
 	}

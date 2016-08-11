@@ -16,14 +16,21 @@ module.exports = function (config) {
 		browsers: ['PhantomJS'],
 
 		reporters: [
-			'mocha'
+			'mocha',
+			'coverage',
+			'coveralls'
 		],
+
+		coverageReporter: {
+			type: 'lcov',
+			dir: '../build/coverage/'
+		},
 
 		preprocessors: {
 			[testEntryPoint]: [
 				'webpack',
 				'sourcemap'
-			].filter(Boolean)
+			]
 		},
 
 		webpack: {
@@ -42,7 +49,9 @@ module.exports = function (config) {
 			'karma-mocha-reporter',
 			'karma-jasmine',
 			'karma-sourcemap-loader',
-			'karma-webpack'
+			'karma-webpack',
+			process.env.NODE_ENV === 'ci' && 'karma-coverage',
+			process.env.NODE_ENV === 'ci' && 'karma-coveralls'
 		]
 	});
 };

@@ -1,16 +1,21 @@
-import {TestService} from '../mock/test.service';
+import {BaseInjectedClass, InjectedClass} from '../mock/inject';
 
 describe('@Inject', () => {
 	it('decorates class', () => {
-		expect(TestService.$inject).toEqual(['$http']);
+		expect(BaseInjectedClass.$inject).toEqual(['$rootScope']);
 	});
+
+	it('decorates class & inherits $inject', () => {
+		expect(InjectedClass.$inject).toEqual(['$rootScope', '$http']);
+	});
+
 	it('decorates class`s static method', () => {
-		expect(TestService.testMethod.$inject).toEqual(['$rootScope']);
+		expect(InjectedClass.injectedMethod.$inject).toEqual(['$q']);
 	});
 
 	it('decorates instance`s method', () => {
-		var testService = new TestService();
+		var injectedClass = new InjectedClass();
 
-		expect(testService.testMethod.$inject).toEqual(['$q']);
+		expect(injectedClass.injectedMethod.$inject).toEqual(['$q']);
 	});
 });

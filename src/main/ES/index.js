@@ -2,7 +2,9 @@ import {
 	Module,
 	Inject,
 	Service,
-	Controller
+	Controller,
+	Run,
+	Config
 } from './decorators';
 
 import {
@@ -17,6 +19,8 @@ export {
 	Inject,
 	Service,
 	Controller,
+	Run,
+	Config,
 
 	// helpers
 	getInjectableClass,

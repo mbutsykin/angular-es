@@ -1,5 +1,5 @@
 const webpackConfig = require('./webpack.config');
-const testEntryPointTpl = '../src/test/ES/index.js';
+const testEntryPoint = '../src/test/ES/index.js';
 
 module.exports = function (config) {
 	config.set({
@@ -10,7 +10,7 @@ module.exports = function (config) {
 
 		files: [
 			require.resolve('babel-polyfill/dist/polyfill.js'),
-			testEntryPointTpl
+			testEntryPoint
 		],
 
 		browsers: ['PhantomJS'],
@@ -20,13 +20,15 @@ module.exports = function (config) {
 		],
 
 		preprocessors: {
-			[testEntryPointTpl]: [
+			[testEntryPoint]: [
 				'webpack',
 				'sourcemap'
 			].filter(Boolean)
 		},
 
-		webpack: webpackConfig,
+		webpack: {
+			module: webpackConfig.module
+		},
 
 		webpackServer: {
 			noInfo: true

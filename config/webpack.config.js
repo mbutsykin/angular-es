@@ -1,4 +1,13 @@
 module.exports = {
+	entry: __dirname + '/../src/main/ES/index.js',
+	output: {
+		path: __dirname + '/../build',
+		filename: 'angular-es.js',
+		libraryTarget: 'commonjs'
+	},
+	externals: {
+		angular: true
+	},
 	module: {
 		loaders: [
 			{

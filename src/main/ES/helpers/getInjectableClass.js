@@ -1,5 +1,7 @@
 export default function (target) {
-	proxy.toString = target.toString;
+	proxy.toString = function () {
+		return target.toString();
+	};
 
 	return (target.$inject || []).concat([proxy]);
 

@@ -7,6 +7,7 @@ import Config from './config.decorator';
 import Value from './value.decorator';
 import Constant from './constant.decorator';
 import Directive from './directive.decorator';
+import Component from './component.decorator';
 
 export {
 	Module,
@@ -17,5 +18,6 @@ export {
 	Config,
 	Value,
 	Constant,
-	Directive
+	Directive,
+	Component
 };

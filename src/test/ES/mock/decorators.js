@@ -7,7 +7,8 @@ import {
 	Run,
 	Constant,
 	Value,
-	Directive
+	Directive,
+	Component
 } from '../../../main/ES';
 
 export {
@@ -19,5 +20,6 @@ export {
 	Run,
 	Constant,
 	Value,
-	Directive
+	Directive,
+	Component
 };

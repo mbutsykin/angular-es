@@ -7,7 +7,8 @@ import {
 	Config,
 	Constant,
 	Value,
-	Directive
+	Directive,
+	Component
 } from './decorators';
 
 import {
@@ -27,6 +28,7 @@ export {
 	Constant,
 	Value,
 	Directive,
+	Component,
 
 	// helpers
 	getInjectableClass,

@@ -12,7 +12,8 @@ import {
 	Decorator,
 	Factory,
 	Filter,
-	Provider
+	Provider,
+	InjectAsProperty
 } from '../../../main/ES';
 
 export {
@@ -29,5 +30,6 @@ export {
 	Decorator,
 	Factory,
 	Filter,
-	Provider
+	Provider,
+	InjectAsProperty
 };

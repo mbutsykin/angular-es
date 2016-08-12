@@ -29,7 +29,7 @@ npm install angular-es
 - [@Factory](#factory)
 - [@Filter](#filter)
 - [@Inject](#inject)
-- ~~[@InjectAsProperty](#injectAsProperty)~~
+- [@InjectAsProperty](#injectAsProperty)
 - [@Module](#module)
 - [@Provider](#provider)
 - [@Run](#run)
@@ -222,10 +222,10 @@ import {Inject} from 'angular-es';
 class BaseInjectedClass {
 }
 
-@Inject('$http')
+@Inject('$http', '$q')
 class InjectedClass extends BaseInjectedClass {
 
-    constructor($rootScope, $http) {
+    constructor($rootScope, $http, $q) {
     	super($rootScope);
     }
 
@@ -235,6 +235,22 @@ class InjectedClass extends BaseInjectedClass {
 
 	@Inject('$q')
 	static injectedMethod() {
+	}
+}
+```
+
+### InjectAsProperty
+Injects provided dependencies as properties
+
+```javascript
+import {Module, Service, InjectAsProperty} from 'angular-es';
+
+@Module(test.name)
+@Service('testService')
+@InjectAsProperty('$q', '$http')
+class TestService {
+	testMethod() {
+		return this.$http();
 	}
 }
 ```

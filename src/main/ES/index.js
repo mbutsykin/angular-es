@@ -12,7 +12,8 @@ import {
 	Decorator,
 	Factory,
 	Filter,
-	Provider
+	Provider,
+	InjectAsProperty
 } from './decorators';
 
 import {
@@ -37,6 +38,7 @@ export {
 	Factory,
 	Filter,
 	Provider,
+	InjectAsProperty,
 
 	// helpers
 	getInjectableClass,

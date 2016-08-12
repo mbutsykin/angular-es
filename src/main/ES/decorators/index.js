@@ -12,6 +12,7 @@ import Decorator from './decorator.decorator';
 import Factory from './factory.decorator';
 import Filter from './filter.decorator';
 import Provider from './provider.decorator';
+import InjectAsProperty from './injectAsProperty.decorator';
 
 export {
 	Module,
@@ -27,5 +28,6 @@ export {
 	Decorator,
 	Factory,
 	Filter,
-	Provider
+	Provider,
+	InjectAsProperty
 };

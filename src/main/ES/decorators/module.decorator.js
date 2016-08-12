@@ -6,8 +6,30 @@ function module(name) {
 
 		module[target.ngType].apply(module, target.ngArguments);
 
+		if (target.injectAsProperty) {
+			console.log(target.injectAsProperty);
+			provideInjections(module, target);
+		}
+
 		return target;
 	};
+
+	function provideInjections(module, target) {
+		module
+			.config(['$provide', $provide => {
+				$provide
+					.decorator(target.ngName, [
+						'$delegate', '$injector',
+						($delegate, $injector) => {
+							target.injectAsProperty.forEach(dependency => {
+								$delegate[dependency.key] = $injector.get(dependency.value);
+							});
+
+							return $delegate;
+						}
+					]);
+			}])
+	}
 }
 
 export default module;

@@ -1,4 +1,4 @@
-import {BaseInjectedClass, InjectedClass} from '../mock/inject';
+import {BaseInjectedClass, InjectedClass} from '../mock/test.inject';
 
 describe('@Inject', () => {
 	it('decorates class', () => {

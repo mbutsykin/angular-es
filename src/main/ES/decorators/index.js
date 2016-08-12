@@ -9,6 +9,7 @@ import Constant from './constant.decorator';
 import Directive from './directive.decorator';
 import Component from './component.decorator';
 import Decorator from './decorator.decorator';
+import Factory from './factory.decorator';
 
 export {
 	Module,
@@ -21,5 +22,6 @@ export {
 	Constant,
 	Directive,
 	Component,
-	Decorator
+	Decorator,
+	Factory
 };

@@ -26,7 +26,7 @@ npm install angular-es
 - [@Controller](#controller)
 - [@Decorator](#decorator)
 - [@Directive](#directive)
-- ~~[@Factory](#factory)~~
+- [@Factory](#factory)
 - ~~[@Filter](#filter)~~
 - [@Inject](#inject)
 - ~~[@InjectAsProperty](#injectAsProperty)~~
@@ -163,6 +163,30 @@ class MyDirective {
 }
 ```
 
+### Factory
+Register factory
+
+```javascript
+import {Factory, Module, Inject} from 'angular-es';
+
+class TestModel {
+	static $q;
+	static myService
+}
+
+@Module('my.module')
+@Factory('TestModel')
+@Inject('$q', 'myService')
+class TestModelFactory {
+	constructor($q, myService) {
+		TestModel.$q = $q;
+		TestModel.myService = myService;
+		return TestModel;
+	}
+}
+
+```
+
 ### Inject
 Adds `$inject` to target
 
@@ -188,7 +212,6 @@ class InjectedClass extends BaseInjectedClass {
 	static injectedMethod() {
 	}
 }
-
 ```
 
 ### Module

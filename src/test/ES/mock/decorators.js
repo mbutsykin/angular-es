@@ -8,7 +8,8 @@ import {
 	Constant,
 	Value,
 	Directive,
-	Component
+	Component,
+	Decorator
 } from '../../../main/ES';
 
 export {
@@ -21,5 +22,6 @@ export {
 	Constant,
 	Value,
 	Directive,
-	Component
+	Component,
+	Decorator
 };

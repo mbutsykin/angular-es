@@ -8,6 +8,7 @@ import Value from './value.decorator';
 import Constant from './constant.decorator';
 import Directive from './directive.decorator';
 import Component from './component.decorator';
+import Decorator from './decorator.decorator';
 
 export {
 	Module,
@@ -19,5 +20,6 @@ export {
 	Value,
 	Constant,
 	Directive,
-	Component
+	Component,
+	Decorator
 };

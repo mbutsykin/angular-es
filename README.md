@@ -9,7 +9,7 @@ This is a helper library for developing [Angular@1.x](https://github.com/angular
 
 ## Benefits
 - Perfectly runs with [jspm](http://jspm.io/), [webpack](https://webpack.github.io/) & [babel](https://babeljs.io/)
-- Support lazy loading & initialization with libraries like [$ocLazyLoad](https://github.com/ocombe/ocLazyLoad)
+- Supports lazy loading & initialization with libraries like [$ocLazyLoad](https://github.com/ocombe/ocLazyLoad)
 - Perfectly suits for `folder-by-feature` application structure
 - Simple in usage
 
@@ -24,7 +24,7 @@ npm install angular-es
 - [@Config](#config)
 - [@Constant](#constant)
 - [@Controller](#controller)
-- ~~[@Decorator](#decorator)~~
+- [@Decorator](#decorator)
 - [@Directive](#directive)
 - ~~[@Factory](#factory)~~
 - ~~[@Filter](#filter)~~
@@ -50,7 +50,7 @@ import {Component, Module, Inject} from 'angular-es';
 	bindings: {
 		data: '='
 	},
-	template: `<p>{{ data }}</p>`
+	template: `<p>{{ $ctrl.data }}</p>`
 })
 @Inject('myService')
 class MyComponentController {
@@ -110,6 +110,27 @@ class MyController {
 		this.$myService = $myService;
 	}
 }
+```
+
+### Decorator
+Provide decorator
+
+```javascript
+import {Decorator, Module, Inject} from 'angular-es';
+
+@Module('my.module')
+@Decorator('$http')
+@Inject('$delegate')
+class HttpDecorator {
+	constructor($delegate) {
+		$delegate.decorated = true;
+
+		return $delegate;
+	}
+}
+
+export {HttpDecorator};
+
 ```
 
 ### Directive

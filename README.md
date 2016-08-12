@@ -31,7 +31,7 @@ npm install angular-es
 - [@Inject](#inject)
 - ~~[@InjectAsProperty](#injectAsProperty)~~
 - [@Module](#module)
-- ~~[@Provider](#provider)~~
+- [@Provider](#provider)
 - [@Run](#run)
 - [@Service](#service)
 - [@Value](#value)
@@ -254,6 +254,36 @@ import my from './my.module';
 @Controller('MyController')
 class MyController {
 }
+```
+
+### Provider
+Register provider
+
+```javascript
+import {Provider, Module, Inject} from 'angular-es';
+
+@Module('my.module')
+@Provider('myService')
+class MyServiceProvider {
+
+	static config;
+
+	config(config) {
+		MyServiceProvider.config = config;
+	}
+
+	@Inject('$q')
+	$get($q) {
+		return {
+			getConfig: getConfig
+		};
+
+		function getConfig() {
+			return $q.resolve(MyServiceProvider.config);
+		}
+	}
+}
+
 ```
 
 ### Run

@@ -11,6 +11,7 @@ import Component from './component.decorator';
 import Decorator from './decorator.decorator';
 import Factory from './factory.decorator';
 import Filter from './filter.decorator';
+import Provider from './provider.decorator';
 
 export {
 	Module,
@@ -25,5 +26,6 @@ export {
 	Component,
 	Decorator,
 	Factory,
-	Filter
+	Filter,
+	Provider
 };

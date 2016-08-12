@@ -11,7 +11,8 @@ import {
 	Component,
 	Decorator,
 	Factory,
-	Filter
+	Filter,
+	Provider
 } from '../../../main/ES';
 
 export {
@@ -27,5 +28,6 @@ export {
 	Component,
 	Decorator,
 	Factory,
-	Filter
+	Filter,
+	Provider
 };

@@ -11,7 +11,8 @@ import {
 	Component,
 	Decorator,
 	Factory,
-	Filter
+	Filter,
+	Provider
 } from './decorators';
 
 import {
@@ -35,6 +36,7 @@ export {
 	Decorator,
 	Factory,
 	Filter,
+	Provider,
 
 	// helpers
 	getInjectableClass,

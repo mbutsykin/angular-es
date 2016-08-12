@@ -5,7 +5,7 @@ module.exports = {
 	entry: helper.getEntryPoint(),
 	output: {
 		path: helper.getBuildDir(),
-		filename: 'angular-es.js',
+		filename: 'angular-es.min.js',
 		libraryTarget: 'commonjs'
 	},
 	externals: {

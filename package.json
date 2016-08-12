@@ -2,7 +2,7 @@
   "name": "angular-es",
   "version": "0.0.2",
   "description": "Angular 1.x ES helper",
-  "main": "src/main/ES/index.js",
+  "main": "build/angular-es.min.js",
   "scripts": {
     "test": "node_modules/karma/bin/karma start ./config/karma.config.js",
     "build": "webpack --config ./config/webpack.config.js --display-modules",

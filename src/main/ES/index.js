@@ -10,7 +10,8 @@ import {
 	Directive,
 	Component,
 	Decorator,
-	Factory
+	Factory,
+	Filter
 } from './decorators';
 
 import {
@@ -33,6 +34,7 @@ export {
 	Component,
 	Decorator,
 	Factory,
+	Filter,
 
 	// helpers
 	getInjectableClass,

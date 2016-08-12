@@ -10,7 +10,8 @@ import {
 	Directive,
 	Component,
 	Decorator,
-	Factory
+	Factory,
+	Filter
 } from '../../../main/ES';
 
 export {
@@ -25,5 +26,6 @@ export {
 	Directive,
 	Component,
 	Decorator,
-	Factory
+	Factory,
+	Filter
 };

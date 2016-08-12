@@ -10,6 +10,7 @@ import Directive from './directive.decorator';
 import Component from './component.decorator';
 import Decorator from './decorator.decorator';
 import Factory from './factory.decorator';
+import Filter from './filter.decorator';
 
 export {
 	Module,
@@ -23,5 +24,6 @@ export {
 	Directive,
 	Component,
 	Decorator,
-	Factory
+	Factory,
+	Filter
 };

@@ -27,7 +27,7 @@ npm install angular-es
 - [@Decorator](#decorator)
 - [@Directive](#directive)
 - [@Factory](#factory)
-- ~~[@Filter](#filter)~~
+- [@Filter](#filter)
 - [@Inject](#inject)
 - ~~[@InjectAsProperty](#injectAsProperty)~~
 - [@Module](#module)
@@ -185,6 +185,31 @@ class TestModelFactory {
 	}
 }
 
+```
+
+### Filter
+Register filter
+
+```javascript
+import {Module, Filter, Inject} from 'angular-es';
+
+@Module('my.module')
+@Filter('test')
+@Inject('$q')
+class TestFilter {
+
+	$q;
+
+	constructor($q) {
+		this.$q = $q;
+		return ::this.filter;
+	}
+
+	filter(input) {
+		const $q = this.$q;
+		return input.toUpperCase();
+	}
+}
 ```
 
 ### Inject

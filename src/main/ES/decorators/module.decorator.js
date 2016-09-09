@@ -7,7 +7,6 @@ function module(name) {
 		module[target.ngType].apply(module, target.ngArguments);
 
 		if (target.injectAsProperty) {
-			console.log(target.injectAsProperty);
 			provideInjections(module, target);
 		}
 

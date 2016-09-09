@@ -1,6 +1,6 @@
 {
   "name": "angular-es",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Angular 1.x ES helper",
   "main": "build/angular-es.min.js",
   "scripts": {

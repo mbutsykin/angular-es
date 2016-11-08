@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>angular-es by mbutsykin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">angular-es</h1>
+      <h2 class="project-tagline">Angular 1.x ES2016 helper</h2>
+      <a href="https://github.com/mbutsykin/angular-es" class="btn">View on GitHub</a>
+      <a href="https://github.com/mbutsykin/angular-es/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/mbutsykin/angular-es/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="angular-es" class="anchor" href="#angular-es" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>angular-es</h1>
+
+<p>This is a helper library for developing <a href="https://github.com/angular/angular">Angular@1.x</a> applications with ES7 decorators.
+<br></p>
+
+<h2>
+<a id="benefits" class="anchor" href="#benefits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Benefits</h2>
+
+<ul>
+<li>Perfectly runs with <a href="http://jspm.io/">jspm</a>, <a href="https://webpack.github.io/">webpack</a> &amp; <a href="https://babeljs.io/">babel</a>
+</li>
+<li>Supports lazy loading &amp; initialization with libraries like <a href="https://github.com/ocombe/ocLazyLoad">$ocLazyLoad</a>
+</li>
+<li>Perfectly suits for <code>folder-by-feature</code> application structure</li>
+<li>Simple in usage</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<pre><code>npm install angular-es
+</code></pre>
+
+<h2>
+<a id="available-decorators" class="anchor" href="#available-decorators" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Available decorators</h2>
+
+<ul>
+<li><a href="#component">@Component</a></li>
+<li><a href="#config">@Config</a></li>
+<li><a href="#constant">@Constant</a></li>
+<li><a href="#controller">@Controller</a></li>
+<li><a href="#decorator">@Decorator</a></li>
+<li><a href="#directive">@Directive</a></li>
+<li><a href="#factory">@Factory</a></li>
+<li><a href="#filter">@Filter</a></li>
+<li><a href="#inject">@Inject</a></li>
+<li><a href="#injectAsProperty">@InjectAsProperty</a></li>
+<li><a href="#module">@Module</a></li>
+<li><a href="#provider">@Provider</a></li>
+<li><a href="#run">@Run</a></li>
+<li><a href="#service">@Service</a></li>
+<li><a href="#value">@Value</a></li>
+</ul>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="component" class="anchor" href="#component" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Component</h3>
+
+<p>Define component</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> {<span class="pl-smi">Component</span>, <span class="pl-smi">Module</span>, <span class="pl-smi">Inject</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>angular-es<span class="pl-pds">'</span></span>;
+
+@<span class="pl-en">Module</span>(<span class="pl-s"><span class="pl-pds">'</span>my.module<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Component</span>({
+    selector<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>my-component<span class="pl-pds">'</span></span>,
+    bindings<span class="pl-k">:</span> {
+        data<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>=<span class="pl-pds">'</span></span>
+    },
+    template<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">`</span>&lt;p&gt;{{ $ctrl.data }}&lt;/p&gt;<span class="pl-pds">`</span></span>
+})
+@<span class="pl-en">Inject</span>(<span class="pl-s"><span class="pl-pds">'</span>myService<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">MyComponentController</span> {
+
+    myService;
+
+    <span class="pl-en">constructor</span>(<span class="pl-smi">myService</span>) {
+        <span class="pl-v">this</span>.<span class="pl-smi">myService</span> <span class="pl-k">=</span> myService;
+    }
+}</pre></div>
+
+<h3>
+<a id="config" class="anchor" href="#config" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Config</h3>
+
+<p>Add config block</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> {<span class="pl-smi">Config</span>, <span class="pl-smi">Module</span>, <span class="pl-smi">Inject</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>angular-es<span class="pl-pds">'</span></span>;
+
+@<span class="pl-en">Module</span>(<span class="pl-s"><span class="pl-pds">'</span>my.module<span class="pl-pds">'</span></span>)
+@Config
+@<span class="pl-en">Inject</span>(<span class="pl-s"><span class="pl-pds">'</span>$myServiceProvider<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">MyModuleConfig</span> {
+
+    <span class="pl-en">constructor</span>(<span class="pl-smi">$myServiceProvider</span>) {
+    }
+}</pre></div>
+
+<h3>
+<a id="constant" class="anchor" href="#constant" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Constant</h3>
+
+<p>Register constant</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> {<span class="pl-smi">Constant</span>, <span class="pl-smi">Module</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>angular-es<span class="pl-pds">'</span></span>;
+
+@<span class="pl-en">Module</span>(<span class="pl-s"><span class="pl-pds">'</span>my.module<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Constant</span>(<span class="pl-s"><span class="pl-pds">'</span>MY_CONSTANT<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">MyConstant</span> {
+    foo <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>foo<span class="pl-pds">'</span></span>;
+    bar <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>bar<span class="pl-pds">'</span></span>;
+}</pre></div>
+
+<h3>
+<a id="controller" class="anchor" href="#controller" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Controller</h3>
+
+<p>Register controller</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> {<span class="pl-smi">Controller</span>, <span class="pl-smi">Module</span>, <span class="pl-smi">Inject</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>angular-es<span class="pl-pds">'</span></span>;
+
+@<span class="pl-en">Module</span>(<span class="pl-s"><span class="pl-pds">'</span>my.module<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Controller</span>(<span class="pl-s"><span class="pl-pds">'</span>MyController<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Inject</span>(<span class="pl-s"><span class="pl-pds">'</span>$myService<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">MyController</span> {
+
+    $myService;
+
+    <span class="pl-en">constructor</span>(<span class="pl-smi">$myService</span>) {
+        <span class="pl-v">this</span>.<span class="pl-smi">$myService</span> <span class="pl-k">=</span> $myService;
+    }
+}</pre></div>
+
+<h3>
+<a id="decorator" class="anchor" href="#decorator" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Decorator</h3>
+
+<p>Provide decorator</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> {<span class="pl-smi">Decorator</span>, <span class="pl-smi">Module</span>, <span class="pl-smi">Inject</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>angular-es<span class="pl-pds">'</span></span>;
+
+@<span class="pl-en">Module</span>(<span class="pl-s"><span class="pl-pds">'</span>my.module<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Decorator</span>(<span class="pl-s"><span class="pl-pds">'</span>$http<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Inject</span>(<span class="pl-s"><span class="pl-pds">'</span>$delegate<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">HttpDecorator</span> {
+    <span class="pl-en">constructor</span>(<span class="pl-smi">$delegate</span>) {
+        <span class="pl-smi">$delegate</span>.<span class="pl-smi">decorated</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>;
+
+        <span class="pl-k">return</span> $delegate;
+    }
+}
+
+<span class="pl-k">export</span> {<span class="pl-smi">HttpDecorator</span>};
+</pre></div>
+
+<h3>
+<a id="directive" class="anchor" href="#directive" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Directive</h3>
+
+<p>Register directive</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> {<span class="pl-smi">Directive</span>, <span class="pl-smi">Module</span>, <span class="pl-smi">Inject</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>angular-es<span class="pl-pds">'</span></span>;
+
+@<span class="pl-en">Module</span>(<span class="pl-s"><span class="pl-pds">'</span>my.module<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Directive</span>(<span class="pl-s"><span class="pl-pds">'</span>my-directive<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Inject</span>(<span class="pl-s"><span class="pl-pds">'</span>$myService<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">MyDirective</span> {
+
+    $myService;
+
+    restrict <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>A<span class="pl-pds">'</span></span>;
+    controllerAs <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>vm<span class="pl-pds">'</span></span>;
+
+    <span class="pl-en">constructor</span>(<span class="pl-smi">$myService</span>) {
+        <span class="pl-v">this</span>.<span class="pl-smi">$myService</span> <span class="pl-k">=</span> $myService;
+    }
+
+    @<span class="pl-en">Inject</span>(<span class="pl-s"><span class="pl-pds">'</span>$scope<span class="pl-pds">'</span></span>)
+    <span class="pl-en">controller</span>(<span class="pl-smi">$scope</span>) {
+    }
+
+    <span class="pl-en">link</span>(<span class="pl-smi">scope</span>) {
+        <span class="pl-v">this</span>.<span class="pl-smi">$myService</span>;
+    }
+}</pre></div>
+
+<h3>
+<a id="factory" class="anchor" href="#factory" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Factory</h3>
+
+<p>Register factory</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> {<span class="pl-smi">Factory</span>, <span class="pl-smi">Module</span>, <span class="pl-smi">Inject</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>angular-es<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">class</span> <span class="pl-en">TestModel</span> {
+    <span class="pl-k">static</span> $q;
+    <span class="pl-k">static</span> myService
+}
+
+@<span class="pl-en">Module</span>(<span class="pl-s"><span class="pl-pds">'</span>my.module<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Factory</span>(<span class="pl-s"><span class="pl-pds">'</span>TestModel<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Inject</span>(<span class="pl-s"><span class="pl-pds">'</span>$q<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>myService<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">TestModelFactory</span> {
+    <span class="pl-en">constructor</span>(<span class="pl-smi">$q</span>, <span class="pl-smi">myService</span>) {
+        <span class="pl-smi">TestModel</span>.<span class="pl-smi">$q</span> <span class="pl-k">=</span> $q;
+        <span class="pl-smi">TestModel</span>.<span class="pl-smi">myService</span> <span class="pl-k">=</span> myService;
+        <span class="pl-k">return</span> TestModel;
+    }
+}
+</pre></div>
+
+<h3>
+<a id="filter" class="anchor" href="#filter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Filter</h3>
+
+<p>Register filter</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> {<span class="pl-smi">Module</span>, <span class="pl-smi">Filter</span>, <span class="pl-smi">Inject</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>angular-es<span class="pl-pds">'</span></span>;
+
+@<span class="pl-en">Module</span>(<span class="pl-s"><span class="pl-pds">'</span>my.module<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Filter</span>(<span class="pl-s"><span class="pl-pds">'</span>test<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Inject</span>(<span class="pl-s"><span class="pl-pds">'</span>$q<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">TestFilter</span> {
+
+    $q;
+
+    <span class="pl-en">constructor</span>(<span class="pl-smi">$q</span>) {
+        <span class="pl-v">this</span>.<span class="pl-smi">$q</span> <span class="pl-k">=</span> $q;
+        return <span class="pl-k">::</span><span class="pl-v">this</span>.<span class="pl-smi">filter</span>;
+    }
+
+    <span class="pl-en">filter</span>(<span class="pl-smi">input</span>) {
+        <span class="pl-k">const</span> <span class="pl-c1">$q</span> <span class="pl-k">=</span> <span class="pl-v">this</span>.<span class="pl-smi">$q</span>;
+        <span class="pl-k">return</span> <span class="pl-smi">input</span>.<span class="pl-c1">toUpperCase</span>();
+    }
+}</pre></div>
+
+<h3>
+<a id="inject" class="anchor" href="#inject" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Inject</h3>
+
+<p>Adds <code>$inject</code> to target</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> {<span class="pl-smi">Inject</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>angular-es<span class="pl-pds">'</span></span>;
+
+@<span class="pl-en">Inject</span>(<span class="pl-s"><span class="pl-pds">'</span>$rootScope<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">BaseInjectedClass</span> {
+}
+
+@<span class="pl-en">Inject</span>(<span class="pl-s"><span class="pl-pds">'</span>$http<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>$q<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">InjectedClass</span> <span class="pl-k">extends</span> <span class="pl-e">BaseInjectedClass</span> {
+
+    <span class="pl-en">constructor</span>(<span class="pl-smi">$rootScope</span>, <span class="pl-smi">$http</span>, <span class="pl-smi">$q</span>) {
+        <span class="pl-v">super</span>($rootScope);
+    }
+
+    @<span class="pl-en">Inject</span>(<span class="pl-s"><span class="pl-pds">'</span>$q<span class="pl-pds">'</span></span>)
+    <span class="pl-en">injectedMethod</span>() {
+    }
+
+    @<span class="pl-en">Inject</span>(<span class="pl-s"><span class="pl-pds">'</span>$q<span class="pl-pds">'</span></span>)
+    <span class="pl-k">static</span> <span class="pl-en">injectedMethod</span>() {
+    }
+}</pre></div>
+
+<h3>
+<a id="injectasproperty" class="anchor" href="#injectasproperty" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>InjectAsProperty</h3>
+
+<p>Injects provided dependencies as properties</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> {<span class="pl-smi">Module</span>, <span class="pl-smi">Service</span>, <span class="pl-smi">InjectAsProperty</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>angular-es<span class="pl-pds">'</span></span>;
+
+@<span class="pl-en">Module</span>(<span class="pl-smi">test</span>.<span class="pl-c1">name</span>)
+@<span class="pl-en">Service</span>(<span class="pl-s"><span class="pl-pds">'</span>testService<span class="pl-pds">'</span></span>)
+@<span class="pl-en">InjectAsProperty</span>(<span class="pl-s"><span class="pl-pds">'</span>$q<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>$http<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">TestService</span> {
+    <span class="pl-en">testMethod</span>() {
+        <span class="pl-k">return</span> <span class="pl-v">this</span>.<span class="pl-en">$http</span>();
+    }
+}</pre></div>
+
+<h3>
+<a id="module" class="anchor" href="#module" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Module</h3>
+
+<p>Attaches target to specified angular module
+<br>
+<code>@Module</code> decorator is <strong>required</strong> and it has to be present at the top level of target annotation block
+<br>
+<em>Make sure that used angular module is already available</em></p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> {<span class="pl-smi">Module</span>, <span class="pl-smi">Controller</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>angular-es<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> <span class="pl-smi">my</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>./my.module<span class="pl-pds">'</span></span>;
+
+@<span class="pl-en">Module</span>(<span class="pl-smi">my</span>.<span class="pl-c1">name</span>)
+@<span class="pl-en">Controller</span>(<span class="pl-s"><span class="pl-pds">'</span>MyController<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">MyController</span> {
+}</pre></div>
+
+<h3>
+<a id="provider" class="anchor" href="#provider" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Provider</h3>
+
+<p>Register provider</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> {<span class="pl-smi">Provider</span>, <span class="pl-smi">Module</span>, <span class="pl-smi">Inject</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>angular-es<span class="pl-pds">'</span></span>;
+
+@<span class="pl-en">Module</span>(<span class="pl-s"><span class="pl-pds">'</span>my.module<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Provider</span>(<span class="pl-s"><span class="pl-pds">'</span>myService<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">MyServiceProvider</span> {
+
+    <span class="pl-k">static</span> config;
+
+    <span class="pl-en">config</span>(<span class="pl-smi">config</span>) {
+        <span class="pl-smi">MyServiceProvider</span>.<span class="pl-smi">config</span> <span class="pl-k">=</span> config;
+    }
+
+    @<span class="pl-en">Inject</span>(<span class="pl-s"><span class="pl-pds">'</span>$q<span class="pl-pds">'</span></span>)
+    <span class="pl-en">$get</span>($q) {
+        <span class="pl-k">return</span> {
+            getConfig<span class="pl-k">:</span> getConfig
+        };
+
+        <span class="pl-k">function</span> <span class="pl-en">getConfig</span>() {
+            <span class="pl-k">return</span> <span class="pl-smi">$q</span>.<span class="pl-en">resolve</span>(<span class="pl-smi">MyServiceProvider</span>.<span class="pl-smi">config</span>);
+        }
+    }
+}
+</pre></div>
+
+<h3>
+<a id="run" class="anchor" href="#run" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run</h3>
+
+<p>Add run block</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> {<span class="pl-smi">Run</span>, <span class="pl-smi">Module</span>, <span class="pl-smi">Inject</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>angular-es<span class="pl-pds">'</span></span>;
+
+@<span class="pl-en">Module</span>(<span class="pl-s"><span class="pl-pds">'</span>my.module<span class="pl-pds">'</span></span>)
+@Run
+@<span class="pl-en">Inject</span>(<span class="pl-s"><span class="pl-pds">'</span>$rootScope<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">MyRunBlock</span> {
+
+    <span class="pl-en">constructor</span>(<span class="pl-smi">$rootScope</span>) {
+    }
+}</pre></div>
+
+<h3>
+<a id="service" class="anchor" href="#service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Service</h3>
+
+<p>Register service</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> {<span class="pl-smi">Service</span>, <span class="pl-smi">Module</span>, <span class="pl-smi">Inject</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>angular-es<span class="pl-pds">'</span></span>;
+
+@<span class="pl-en">Module</span>(<span class="pl-s"><span class="pl-pds">'</span>my.module<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Service</span>(<span class="pl-s"><span class="pl-pds">'</span>MyService<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Inject</span>(<span class="pl-s"><span class="pl-pds">'</span>$http<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">MyService</span> {
+
+    $http;
+
+    <span class="pl-en">constructor</span>(<span class="pl-smi">$http</span>) {
+        <span class="pl-v">this</span>.<span class="pl-smi">$http</span> <span class="pl-k">=</span> $http;
+    }
+}</pre></div>
+
+<h3>
+<a id="value" class="anchor" href="#value" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Value</h3>
+
+<p>Register value</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> {<span class="pl-smi">Value</span>, <span class="pl-smi">Module</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>angular-es<span class="pl-pds">'</span></span>;
+
+@<span class="pl-en">Module</span>(<span class="pl-s"><span class="pl-pds">'</span>my.module<span class="pl-pds">'</span></span>)
+@<span class="pl-en">Value</span>(<span class="pl-s"><span class="pl-pds">'</span>myValue<span class="pl-pds">'</span></span>)
+<span class="pl-k">class</span> <span class="pl-en">MyValue</span> {
+    foo <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>foo<span class="pl-pds">'</span></span>;
+    bar <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>bar<span class="pl-pds">'</span></span>;
+}</pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/mbutsykin/angular-es">angular-es</a> is maintained by <a href="https://github.com/mbutsykin">mbutsykin</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
